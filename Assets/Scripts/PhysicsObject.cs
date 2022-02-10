@@ -5,10 +5,10 @@ using UnityEngine;
 public class PhysicsObject : MonoBehaviour {
 
     // 
-    public float minGroundNormalY = .65f;
+    public float minGroundNormalY = .75f;
 
     // Used to scale gravity with a float
-        public float gravityModifier = 1f;
+        public float gravityModifier = 2f;
 
     // this is where we will store input from outside the class that refers to where our object is trying to move.
         protected Vector2 targetVelocity;
@@ -30,7 +30,7 @@ public class PhysicsObject : MonoBehaviour {
     // List class represents a list of objects, when can be accessed by index (i.e. an array)
         protected const float minMoveDistance = 0.001f;
     // This shell makes sure our object never gets stuck inside another collider. It adds additional padding to 'distance' in the rb2d.cast function (see movement function)
-        protected const float shellRadius = 0.01f;
+        protected const float shellRadius = 0.001f;
 
     // This function gets and stores a rigidbody 2D component reference.
         void OnEnable()
@@ -107,13 +107,22 @@ public class PhysicsObject : MonoBehaviour {
                 // We only want to copy the indexes of the hitBuffer array that actually hit (or make contact) with something. Just the current, active contacts.
                 // Clear the list so we are not using old data
                 hitBufferList.Clear ();
+
+
                 // Loop over the 'hitBuffer' array with (hitBuffer [i]) and we're using 'count' to only copy over the indexes that have something in them out of the default length of 16. Remember, 'count' is the return of rb2d.cast, wich is the number of results. We then add (copy) each of those indexes to the hit Bufferlist. This is now a list of objects that will overlap with the object's physics object collider
                     for (int i = 0; i < count; i++) {
-                    hitBufferList.Add (hitBuffer [i]);
+                    // This line and the if statement will check if a platform has a PlatformEffector2D.
+                    // If it does, it will allow the player to jump up from underneath, but not fall through
+                    // the top surface
+                    PlatformEffector2D platform =hitBuffer[i].collider.GetComponent<PlatformEffector2D>();
+                    
+                    if(!platform||(hitBuffer[i].normal == Vector2.up && velocity.y < 0 && yMovement)){
+
+                        hitBufferList.Add (hitBuffer [i]);
+                        }
                     }
-                // Loop over the new hitBufferList and compare 'normal' to a minimum ground, normal value.
-                // .Count is the total number of elements in the List
-                // 
+                    // Loop over the new hitBufferList and compare 'normal' to a minimum ground, normal value.
+                    // .Count is the total number of elements in the List
                     for (int i = 0; i < hitBufferList.Count; i++) 
                     {
                         // Checking the normal for each index
@@ -136,12 +145,13 @@ public class PhysicsObject : MonoBehaviour {
                     // getting the difference between the velocity and the currentNormal to determine if we need to subtract from the velocity to prevent pllayer from entering into another collider. 
                     // Example: Slope ceiling that you jump towards, we dont want the player to immediately stop and fall, nor do we want the player's head to go through the ceiling. Instead we want the player to slide against that ceiling while continuing the horizontal movement.
                     // calculate this using Vector2.Dot 
-                    float projection = Vector2.Dot (velocity, currentNormal);
+
+                            // float projection = Vector2.Dot (velocity, currentNormal);
                     // check if projection returns negative number, set velocity to equal velocity minus the projection multiplied by the currentNormal to cancel out the velocity that would be stopped by the collision.
-                    if (projection < 0) 
-                    {
-                        velocity = velocity - projection * currentNormal;
-                    }
+                            // if (projection < 0) 
+                            // {
+                            //     velocity = velocity - projection * currentNormal;
+                            // }
                     // if distance is less than modifiedDistance, then we make distance equal to the modifiedDistance
                     // If the movement will cause a collision, the distance will now equal the modifiedDistance and stop at the collision point. 
                     float modifiedDistance = hitBufferList [i].distance - shellRadius;

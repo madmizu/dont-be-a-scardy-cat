@@ -30,3 +30,20 @@ As a user, it would be nice to be able to:
 - See list of high scores amongst friends only
 
 -----
+## Resources:
+
+- Setting background & foreground layers. Creating Parallax effect:
+    https://www.youtube.com/watch?v=2MImqNvgrNg
+- Simple Endless runner with only end-game obstacles to jump over:
+    https://www.youtube.com/watch?v=xcmYsc2BY-U&t=913s
+- Character movement x and y. Holding space causes endless jump:
+    https://www.youtube.com/watch?v=w9NmPShzPpE
+- Start Game & Gave Over Screens:
+    https://www.youtube.com/watch?v=OLbWB1R095s
+- Add Fonts:
+    https://www.youtube.com/watch?v=JFXrMqLCuqk
+
+admiration Pains
+Orange Juice
+
+

@@ -27,7 +27,7 @@ public class PlayerPlatformerController : PhysicsObject {
         //set the x value of 'move' based on the control input from the player
         move.x = Input.GetAxis ("Horizontal");
         // Check if player has pressed jump button, and grounded must be true, so the player cannot jump in mid-air (NO DOUBLE JUMPING)
-        if (Input.GetButtonDown ("Jump") && grounded) {
+        if (Input.GetButtonDown ("Jump")) {
             // if player has jumped, we add value to the y axis.
             velocity.y = jumpTakeOffSpeed;
             // if the button has been released, we subtract velocity to allow player to cancel their jump in mid-air:
