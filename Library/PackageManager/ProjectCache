@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637799585469206642
-    m_Hash: 2260446868
+      ticks: 637800190332465044
+    m_Hash: 1481324690
   m_LockFileStatus:
     m_FilePath: C:/Users/mhshi/OneDrive/Documents/GitHub/dont-be-a-scardy-cat/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637799585469266675
-    m_Hash: 540712229
+      ticks: 637800190332475010
+    m_Hash: 2690315413
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
