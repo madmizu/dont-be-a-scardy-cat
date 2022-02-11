@@ -42,8 +42,14 @@ As a user, it would be nice to be able to:
     https://www.youtube.com/watch?v=OLbWB1R095s
 - Add Fonts:
     https://www.youtube.com/watch?v=JFXrMqLCuqk
-
-admiration Pains
-Orange Juice
+- Add Sprite Sheets and Make Animations:
+    https://www.youtube.com/watch?v=RGYdzTOvKXQ
+- Animator Controller w/o scripts:
+    https://www.youtube.com/watch?v=1Ll1fy2EehU&list=PLKUARkaoYQT178f_Y3wcSIFiViW8vixL4&index=6
+- Adding boarder to camera view:
+    https://www.youtube.com/watch?v=mWqX8GxeCBk
+- Adding animation:
+    https://www.youtube.com/watch?v=GChUpPnOSkg&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U&index=4
+- 
 
 
