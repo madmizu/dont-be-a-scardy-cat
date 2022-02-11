@@ -1,75 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+// using System.Collections;
+// using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // declaring public variables will allow the variable to be accessed and changed in unity editor
+    public float JumpForce = 1;
+    public float MovementSpeed = 1;
+
     private Rigidbody2D rb2d;
 
-    private float moveSpeed;
-    private float jumpForce;
-    private bool isJumping;
-    private float moveHorizontal;
-    private float moveVertical;    
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake ()
     {
-        // 'gameObject' with lower case 'g' is a reference to a the game object this script is attached to in Unity
-        // .GetComponent<>(); inside <> you list the component.
-        rb2d = gameObject.GetComponent<Rigidbody2D>();
-
-        moveSpeed = 2f;
-        jumpForce = 5f;
-        isJumping = false;
+        spriteRenderer = GetComponent<SpriteRenderer> ();    
+        animator = GetComponent<Animator> ();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start ()
     {
-        // if the player is typing on a key, we want to grab that click. 
-        // Input is a property. .GetAxisRaw this grabs the type of input we specify in the ()
-        // we are setting the value of 'moveHorizontal' to the user's input, specifically the keys that would move an object left and right or a and d (i.e. 'horizontal')
-        // You can change what "horizontal" means in the Unity Project Settings
-        moveHorizontal =Input.GetAxisRaw("Horizontal");
-        moveVertical =Input.GetAxisRaw("Jump");
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate ()
+    private void Update()
     {
-        // anything involving physics, we put in FixedUpdate.
-        // this could be 0 instead of 0.1f.
-        // This like say if we are moving left or if we are moving right.
-        if(moveHorizontal > 0.1f || moveHorizontal < -0.1f)
-        {
-            // not we add force to our object
-            // Vector2(x axis, y axis) == How far to move side to side and up and down
-            // .AddForce applies Time.DeltaTime as a default in its Forcemode. Time.DeltaTime is the time it took to render the last frame
-            // ForceMode2D.Impulse has instantaneous change in movement. 
-            rb2d.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
-        }
-        if(!isJumping && moveVertical > 0.1f)
-        {
-            rb2d.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
-        } 
-        //Raycast = we take our player, shoot a ray that we cant see, is shot towards the ground
-        // boxcast shoots a box downward.
-    }
+        // referencing the default horizontal input axis (i.e. 'a', 'd', 'left arrow', 'right arrow')
+        // returns 1 for 'd' and 'right arrow' keys
+        // returns -1 for 'a' and 'left arrow' keys
+        var movement = Input.GetAxis("Horizontal");
+        // Vector2 takes in two parameters: x-axis & y-axis. Vector 3 would have a 3rd parameter for z-axis
+        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
 
-    //this is to stop character from continually jumping.
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "ground")
+        if(Input.GetButtonDown("Jump") && Mathf.Abs(rb2d.velocity.y) < 0.001f)
         {
-            isJumping = false;
-        }
-    }
-
-    void onTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "ground")
-        {
-            isJumping = true;
+            rb2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
     }
 }
