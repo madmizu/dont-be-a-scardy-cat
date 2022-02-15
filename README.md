@@ -34,6 +34,9 @@ As a user, it would be nice to be able to:
 
 - Setting background & foreground layers. Creating Parallax effect:
     https://www.youtube.com/watch?v=2MImqNvgrNg
+
+    https://www.youtube.com/watch?v=TccZzs1kJQM&list=PL0eyrZgxdwhxnxfnzbmmB13ba7kv2yXuW&index=11
+
 - Simple Endless runner with only end-game obstacles to jump over:
     https://www.youtube.com/watch?v=xcmYsc2BY-U&t=913s
 - Character movement x and y. Holding space causes endless jump:
@@ -44,12 +47,31 @@ As a user, it would be nice to be able to:
     https://www.youtube.com/watch?v=JFXrMqLCuqk
 - Add Sprite Sheets and Make Animations:
     https://www.youtube.com/watch?v=RGYdzTOvKXQ
-- Animator Controller w/o scripts:
+- Animator Controller without scripts:
     https://www.youtube.com/watch?v=1Ll1fy2EehU&list=PLKUARkaoYQT178f_Y3wcSIFiViW8vixL4&index=6
 - Adding boarder to camera view:
     https://www.youtube.com/watch?v=mWqX8GxeCBk
-- Adding animation:
+- Animator Controller with scripts:
     https://www.youtube.com/watch?v=GChUpPnOSkg&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U&index=4
-- 
+- Player collecting items:
+    https://www.youtube.com/watch?v=VBDlOJ6G_KI&list=PL0eyrZgxdwhxnxfnzbmmB13ba7kv2yXuW&index=10
+- Player collecting items & Update Score Count:
+    https://www.youtube.com/watch?v=pXn9icmreXE&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U&index=7
+- Player Death:
+    https://www.youtube.com/watch?v=ynH51MiKutY&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U&index=8
+- Load Next Level through button click:
+    https://www.youtube.com/watch?v=CE9VOZivb3I
+- Send variables between scenes (i.e. total score):
+    https://www.youtube.com/watch?v=BZjmqMd-4vo&t=24s
+- Host game on website through gizmo:
+    https://www.youtube.com/watch?v=fPzsWFJ2JG8
+- Export unity game:
+    https://www.youtube.com/watch?v=JZqTHjjtQHM
+- patches and updates:
+    https://www.youtube.com/watch?v=qw3rshPgTD
+    
+    
 
+Attributes:
+-<a href='https://www.freepik.com/vectors/animation-frames'>Animation frames vector created by freepik - www.freepik.com</a>
 

@@ -10,6 +10,8 @@ TagManager:
   - spike
   - fish
   - bkg
+  - TEST
+  - nextLevel
   layers:
   - Default
   - TransparentFX
