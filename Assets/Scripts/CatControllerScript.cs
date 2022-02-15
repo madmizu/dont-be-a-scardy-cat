@@ -13,6 +13,8 @@ public class CatControllerScript : MonoBehaviour
 
     private float movement;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -29,6 +31,7 @@ public class CatControllerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && Mathf.Abs(rb2d.velocity.y) < 0.001f)
         {
             rb2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+            jumpSoundEffect.Play();
             anim.SetBool("jumping", true);
         } else if (Mathf.Abs(rb2d.velocity.y) < 0.001f)
         {
@@ -55,14 +58,5 @@ public class CatControllerScript : MonoBehaviour
         {
             anim.SetBool("running", false);
         }
-
-        // if (Input.GetButtonDown("Jump"))
-        // {
-        //     anim.SetBool("jumping", true);
-        // }
-        // else
-        // {
-        //     anim.SetBool("jumping", false);
-        // }
     }
 }
