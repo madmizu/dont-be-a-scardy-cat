@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/3-GameOver.unity
     guid: 94cfbc1921285e147b84d1c4779dd849
   - enabled: 1
+    path: Assets/Scenes/5-HighScores.unity
+    guid: cb2e9ea6bfc524d47b1d95d00fbc72ba
+  - enabled: 1
+    path: Assets/Scenes/SubmitScore.unity
+    guid: 13ac52b9e2d409b4bac36c6adc692a03
+  - enabled: 0
     path: Assets/Scenes/4-Login.unity
     guid: 0ee435db24ea7e94d8d3c034504bdea2
   - enabled: 0
