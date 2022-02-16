@@ -69,6 +69,11 @@ As a user, it would be nice to be able to:
     https://www.youtube.com/watch?v=JZqTHjjtQHM
 - patches and updates:
     https://www.youtube.com/watch?v=qw3rshPgTD
+- RESTful APIs in Unity (GET request only)
+    https://www.youtube.com/watch?v=XIbZDz_p6vE&t=185s
+- GET/POST requests using Unity.Network
+    https://www.youtube.com/watch?v=lnwOq0kW4ms
+
     
     
 

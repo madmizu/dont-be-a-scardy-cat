@@ -28,6 +28,16 @@ public class LevelChanger : MonoBehaviour
         StartCoroutine(LoadLevelInt(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadSubmitHighScore()
+    {
+        StartCoroutine(LoadLevelName("SubmitScore"));
+    }
+
+    public void SeeHighScores()
+    {
+        StartCoroutine(LoadLevelName("5-HighScores"));
+    }
+
     public void LoadGameOver()
     {
         StartCoroutine(LoadLevelName("3-GameOver"));
