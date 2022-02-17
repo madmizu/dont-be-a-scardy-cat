@@ -4,10 +4,10 @@ using System.Collections;
 
 public class APIPost : MonoBehaviour
 {
-    string highscore_url = "https://scardey-cat-data.herokuapp.com/scores";
+    string highscore_url = "https://scardycat.herokuapp.com/scores";
     public static string playName;
     string score = PlayerCollector.totalScore.ToString();
-    string userId = "1";
+    string userId = "0";
 
 
     public void ReadStringInput(string str)
