@@ -1,67 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerCollector : MonoBehaviour
 {
+    public static PlayerCollector instance;
+
+    private TimeSpan timePlaying;
+    private bool timerGoing;
+
+    private float elapsedTime;
+
     public static int totalScore;
     public static bool isAlive;
     private Animator anim;
     private CatControllerScript playerMovement;
     public LevelChanger endGame;
     
-    private int fishes = 0;
-    float timeLapsed;
+    private int fishes;
     float score;
-    // float test;
 
-    private int f1 = 0;
-    private int f2 = 0;
-    private int f3 = 0;
-    private int f4 = 0;
-    private int f5 = 0;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text fishText;
     [SerializeField] private AudioSource collectionSoundEffect;
     [SerializeField] private AudioSource finishSound;
     [SerializeField] private AudioSource deathSoundEffect;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         playerMovement = GetComponent<CatControllerScript>();    
         endGame = GameObject.FindGameObjectWithTag("nextLevel").GetComponent<LevelChanger>();  
         anim = GetComponent<Animator>();
-    }
-
-    private void Awake ()
-    {
-        timeLapsed += Time.deltaTime * 1;
+        fishes = 0;
+        timerGoing = true;
+        elapsedTime = 0f;
         score = 0;
         totalScore = 0;
         isAlive=true;
-        // test = 0;
-
-        if (timeLapsed < 10f) // 2,000
-        {
-            f1 = fishes + 1;
-        }
-        else if (timeLapsed < 25f) //1,000
-        {
-            f2 = fishes - f1 + 1;
-        }
-        else if (timeLapsed < 60f) //300
-        {
-            f3 = fishes - f1 - f2 + 1;
-        }
-        else if (timeLapsed < 80f) //160
-        {
-            f4 = fishes - f3 - f2 -f1 + 1;
-        }
-        else
-        {
-            f5 = fishes - f4 - f3 - f2 - f1 + 1;
-        }
 
     }
 
@@ -69,43 +51,56 @@ public class PlayerCollector : MonoBehaviour
     {
         if (isAlive)
         {
+            elapsedTime += Time.deltaTime;
+            timePlaying = TimeSpan.FromSeconds(elapsedTime);
+            // string timePlayingStr = "TIME: " + timePlaying.ToString("mm':'ss'.'ff");
+            score += elapsedTime;
             totalScore = (int)Mathf.Round(score);
             scoreText.text = "SCORE: " + totalScore.ToString();
             fishText.text = "FISHES: " + fishes + " / 20";
+        }      
+    }
 
-            if (timeLapsed < 10f) // 2,000
+    void CalculateScore ()
+    {
+        double t = timePlaying.Seconds;
+        float playtime = (float)t;
+            if (playtime < 5f) // 2,000
             {
-                score += (timeLapsed * 200 * f1);
+                // score += playtime * 1f;
+                score += playtime * 1f;
             }
-            else if (timeLapsed < 25f) //1,000
+            else if (playtime < 10f) //1,000
             {
-                score += (timeLapsed * 40 * f2);
+                score += playtime * 1.5f;
             }
-            else if (timeLapsed < 60f) //300
+            else if (playtime < 15f) //300
             {
-                score += (timeLapsed * f3);
+                score += playtime * 2f;
             }
-            else if (timeLapsed < 80f) //160
+            else if (playtime < 20f) //160
             {
-                score += (timeLapsed * f4);
+                score += playtime * 1.5f;
             }
             else
             {
-                score += (timeLapsed * f5);
+                score += playtime * 3f;
             }
-        }      
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("fish"))
         {
-            collectionSoundEffect.Play();
             fishes++;
+            collectionSoundEffect.Play();
+            CalculateScore();
         }
 
         if (fishes == 20)
         {
+            totalScore = (int)Mathf.Round(score) + (1000 * (20-fishes));
+            timerGoing = false;
             finishSound.Play();
             fishText.text = "FISHES: 20 / 20";
             anim.SetTrigger("win");
@@ -126,6 +121,7 @@ public class PlayerCollector : MonoBehaviour
 
     public void Die()
     {
+        totalScore = (int)Mathf.Round(score) + (1000 * (20-fishes));
         deathSoundEffect.Play();
         anim.SetTrigger("death");
         playerMovement.enabled = false;

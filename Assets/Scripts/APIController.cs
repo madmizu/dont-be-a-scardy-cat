@@ -12,7 +12,7 @@ public class APIController : MonoBehaviour
     public Text pointsText;
     public TextMeshProUGUI[] highscoreArray;    
     public TextMeshProUGUI[] usernameArray;     
-    private readonly string baseScoreURL = "https://scardey-cat-data.herokuapp.com/scores";
+    private readonly string baseScoreURL = "https://scardycat.herokuapp.com/scores";
 
     private void Start()
     {
@@ -31,9 +31,6 @@ public class APIController : MonoBehaviour
 
     IEnumerator GetHighScores()
     {
-
-
-
         string highScoreURL = baseScoreURL;
         UnityWebRequest scoreInfoRequest = UnityWebRequest.Get(highScoreURL);
         yield return scoreInfoRequest.SendWebRequest();
@@ -51,14 +48,14 @@ public class APIController : MonoBehaviour
             for (int i = 0; i < scoreInfo.Count; i++)
             {
                 allScores[i] = scoreInfo[i]["score"];
-                if (scoreInfo[i]["name"])
-                    {
-                        allUsernames[i] = scoreInfo[i]["name"];
-                    }
-                else
-                    {
-                        allUsernames[i] = scoreInfo[i]["user"]["username"];
-                    }
+                // if (scoreInfo[i]["name"])
+                //     {
+                allUsernames[i] = scoreInfo[i]["name"];
+                    // }
+                // else
+                //     {
+                //         allUsernames[i] = scoreInfo[i]["user"]["username"];
+                //     }
             }
         for (int i = 0; i < 10; i++)
         {
