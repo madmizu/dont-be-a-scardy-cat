@@ -73,6 +73,12 @@ As a user, it would be nice to be able to:
     https://www.youtube.com/watch?v=XIbZDz_p6vE&t=185s
 - GET/POST requests using Unity.Network
     https://www.youtube.com/watch?v=lnwOq0kW4ms
+- POST request
+    https://docs.unity3d.com/ScriptReference/WWWForm.html
+- Input fields
+    https://www.youtube.com/watch?v=guelZvubWFY&t=151s
+- In-game timer
+    https://www.youtube.com/watch?v=qc7J0iei3BU
 
     
     

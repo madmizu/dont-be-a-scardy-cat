@@ -17,6 +17,11 @@ public class StartGame : MonoBehaviour
         }
     }
 
+    public void LoadInstructions1()
+    {
+        StartCoroutine(LoadLevelName("Instructions"));
+    }
+
     public void LoadStartGame()
     {
         StartCoroutine(LoadLevelInt(SceneManager.GetActiveScene().buildIndex + 1));
