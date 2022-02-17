@@ -33,6 +33,16 @@ public class LevelChanger : MonoBehaviour
         StartCoroutine(LoadLevelName("SubmitScore"));
     }
 
+    public void LoadInstructions1()
+    {
+        StartCoroutine(LoadLevelName("Instructions"));
+    }
+
+    public void LoadInstructions2()
+    {
+        StartCoroutine(LoadLevelName("Instructions2"));
+    }
+
     public void SeeHighScores()
     {
         StartCoroutine(LoadLevelName("5-HighScores"));
